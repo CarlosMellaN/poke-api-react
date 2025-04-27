@@ -3,6 +3,7 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
+import { NavLink } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
@@ -39,50 +40,55 @@ export default function AppBar() {
               <div className="flex shrink-0 items-center">
                 <img
                   alt="Your Company"
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                  src="src/assets/pokemon_logo.svg"
                   className="h-8 w-auto"
                 />
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   {navigation.map((item) => (
-                    <a
+                    <NavLink
                       key={item.name}
-                      href={item.href}
+                      to={item.href} // Use 'to' for NavLink
+                      className={(
+                        { isActive } // className is now a function
+                      ) =>
+                        classNames(
+                          isActive
+                            ? "bg-red-700 text-white"
+                            : "text-white hover:bg-red-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
+                        )
+                      }
                       aria-current={item.current ? "page" : undefined}
-                      className={classNames(
-                        item.current
-                          ? "bg-red-700 text-white"
-                          : "text-white hover:bg-red-700 hover:text-white",
-                        "rounded-md px-3 py-2 text-sm font-medium"
-                      )}
                     >
                       {item.name}
-                    </a>
+                    </NavLink>
                   ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
-
         <DisclosurePanel className="sm:hidden">
           <div className="space-y-1 px-2 pt-2 pb-3">
             {navigation.map((item) => (
-              <DisclosureButton
+              <NavLink
                 key={item.name}
-                as="a"
-                href={item.href}
-                aria-current={item.current ? "page" : undefined}
-                className={classNames(
-                  item.current
-                    ? "bg-red-900 text-white"
-                    : "text-white hover:bg-red-700 hover:text-white",
-                  "block rounded-md px-3 py-2 text-base font-medium"
-                )}
+                to={item.href}
+                className={({ isActive, isPending }) =>
+                  classNames(
+                    isActive
+                      ? "bg-red-900 text-white"
+                      : isPending
+                      ? "text-white bg-red-800"
+                      : "text-white hover:bg-red-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
+                  )
+                }
               >
                 {item.name}
-              </DisclosureButton>
+              </NavLink>
             ))}
           </div>
         </DisclosurePanel>
