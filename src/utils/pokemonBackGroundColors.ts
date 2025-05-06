@@ -1,4 +1,5 @@
 export function getCardBackgroundClass(type: string) {
+  if (!type) return "bg-gray-200";
   const bgClasses: { [key: string]: string } = {
     fire: "bg-red-100",
     water: "bg-blue-100",
@@ -23,6 +24,7 @@ export function getCardBackgroundClass(type: string) {
 }
 
 export function getTypeClass(type: string) {
+  if (!type) return "bg-gray-200";
   const typeClasses: { [key: string]: string } = {
     fire: "bg-red-500 text-white",
     water: "bg-blue-500 text-white",
@@ -47,6 +49,7 @@ export function getTypeClass(type: string) {
 }
 
 export function getNameTypeClass(type: string) {
+  if (!type) return "bg-gray-200";
   const typeClasses: { [key: string]: string } = {
     fire: "text-red-500",
     water: "text-blue-500",

@@ -7,7 +7,7 @@ interface TeamEditorProps {
   pokemon: Pokemon;
 }
 
-export function TeamEditor({ pokemon }: TeamEditorProps) {
+const TeamEditor = ({ pokemon }: TeamEditorProps) => {
   const teamPokemon = useTeamPokemonStore();
   const isTeamPokemon = useTeamPokemonStore((state) =>
     state.isInTeamPokemons(pokemon)
@@ -62,4 +62,5 @@ export function TeamEditor({ pokemon }: TeamEditorProps) {
       </div>
     </div>
   );
-}
+};
+export default TeamEditor;

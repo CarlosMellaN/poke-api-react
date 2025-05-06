@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import PokemonHome from "./pages/PokemonHome";
 import PokemonTeam from "./pages/PokemonTeam";
+import PokemonDetails from "./pages/PokemonDetails";
 import AppBar from "./layouts/AppBar";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PokemonHome />} />
         <Route path="/team" element={<PokemonTeam />} />
+        <Route path="/team/:id" element={<PokemonDetails />} />
         {/* <Route path="/team" element={<Team />} /> */}
         {/* <Route path="/projects" element={<Projects />} /> */}
         {/* <Route path="/calendar" element={<Calendar />} /> */}

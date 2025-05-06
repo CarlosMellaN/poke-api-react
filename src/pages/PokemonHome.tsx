@@ -6,9 +6,9 @@ import {
 import { mapPokemonDetails } from "../utils/pokemonBasics";
 import type { Pokemon } from "../types/pokemonTypes";
 import { getAllPokemons, getPokemon } from "../services/pokemonServices";
-import { TeamEditor } from "../components/TeamEditor";
+import TeamEditor from "../components/TeamEditor";
 
-export default function Home() {
+const Home = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
   const getPokemons = async () => {
@@ -52,7 +52,7 @@ export default function Home() {
               {pokemon.name}
             </p>
             <span
-              className={`text-gray-700 font-bold opacity-70 ${getNameTypeClass(
+              className={`text-gray font-bold opacity-70 ${getNameTypeClass(
                 pokemon.types[0]?.name
               )}`}
             >
@@ -73,4 +73,6 @@ export default function Home() {
       ))}
     </div>
   );
-}
+};
+
+export default Home;

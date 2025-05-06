@@ -21,7 +21,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export const PokemonChart: React.FC<PokemonChartProps> = ({ stats }) => {
+const PokemonChart: React.FC<PokemonChartProps> = ({ stats }) => {
   const chartData = {
     labels: stats.map((stat) => stat.stat.name.toUpperCase()),
     datasets: [
@@ -82,3 +82,5 @@ export const PokemonChart: React.FC<PokemonChartProps> = ({ stats }) => {
     </div>
   );
 };
+
+export default PokemonChart;
